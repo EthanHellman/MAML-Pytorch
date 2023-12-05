@@ -1,5 +1,5 @@
-backup
-miniimagenet
-omniglot
-.idea
-__pycache__
+# Ignore specific blobs in RemoteCLIP
+checkpoints/models--chendelong--RemoteCLIP/blobs/*
+
+# Ignore specific snapshots in RemoteCLIP
+checkpoints/models--chendelong--RemoteCLIP/snapshots/*
