@@ -16,6 +16,7 @@ class FMoWDataset(Dataset):
 
         self.label_to_idx = {label: idx for idx, label in enumerate(np.unique(self.labels))}
         self.idx_to_label = {idx: label for label, idx in self.label_to_idx.items()}
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
     def create_textual_inputs(self, df):
         textual_inputs = []
@@ -29,7 +30,9 @@ class FMoWDataset(Dataset):
 
     def __getitem__(self, idx):
         img_path = self.image_paths[idx]
-        image = self.preprocess(Image.open(img_path))
+        image = self.preprocess(Image.open(img_path)).to(self.device)
         label_idx = self.label_to_idx[self.labels[idx]]
         text = self.textual_inputs[idx]
+        # text = torch.tensor(text).to(self.device)
+        label_idx = torch.tensor(label_idx).to(self.device)
         return image, text, label_idx

@@ -1,19 +1,24 @@
 import random
 from torch.utils.data import Subset
 
-def precompute_class_indices(dataset):
-    print("pre-computing labels")
-    class_indices = {}
-    for idx, (_, _, label) in enumerate(dataset):
-        if label not in class_indices:
-            class_indices[label] = []
-        class_indices[label].append(idx)
-    print(class_indices)
-    return class_indices
+def precompute_country_indices(grouped_df):
+    print("Pre-computing country indices from grouped DataFrame")
+    country_indices = {name: list(group.index) for name, group in grouped_df}
+    return country_indices
 
-def create_few_shot_dataset(dataset, shots, num_classes, class_indices):
-    print("creating few-shot dataset")
+def create_few_shot_dataset(dataset, num_shot, num_way, country_indices):
+    # print("Creating few-shot dataset")
     few_shot_dataset_indices = []
-    for i in range(num_classes):
-        few_shot_dataset_indices.extend(random.sample(class_indices[i], min(shots, len(class_indices[i]))))
+
+    # Randomly select 'num_way' countries
+    selected_countries = random.sample(list(country_indices.keys()), num_way)
+
+    # For each selected country, pick 'num_shot' samples
+    for country in selected_countries:
+        country_indices_list = country_indices[country]
+        if len(country_indices_list) >= num_shot:
+            few_shot_dataset_indices.extend(random.sample(country_indices_list, num_shot))
+        else:
+            few_shot_dataset_indices.extend(country_indices_list)
+
     return Subset(dataset, few_shot_dataset_indices)

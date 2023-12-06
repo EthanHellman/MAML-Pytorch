@@ -24,3 +24,9 @@ class CLIPModel:
     def preprocess_image(self, image):
         # Preprocess an image using the CLIP model's preprocessing
         return self.preprocess(image)
+
+    def train(self):
+        self.model.train()
+    
+    def eval(self):
+        self.model.eval()
