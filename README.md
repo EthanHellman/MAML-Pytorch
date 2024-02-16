@@ -1,3 +1,7 @@
+#  Overview
+Complete restructuring of MAML code3 base to implement semantic injection of geospatial information from FMoW dataset into the domain-specific foundation model RemoteCLIP. Entire MAML training refactored to work with CLIP model training of both vision and text encoder. Custom dataloaders, model classes, and dynamic data distribution classes created to work with highly specific training of RemoteCLIP + FMoW dataset. 
+
+
 #  MAML-Pytorch
 PyTorch implementation of the supervised learning experiments from the paper:
 [Model-Agnostic Meta-Learning (MAML)](https://arxiv.org/abs/1703.03400).
@@ -9,8 +13,6 @@ PyTorch implementation of the supervised learning experiments from the paper:
 For Tensorflow Implementation, please visit official [HERE](https://github.com/cbfinn/maml) and simplier version [HERE](https://github.com/dragen1860/MAML-TensorFlow).
 
 For First-Order Approximation Implementation, Reptile namely, please visit [HERE](https://github.com/dragen1860/Reptile-Pytorch).
-
-![heart](res/heart.gif)
 
 # Platform
 - python: 3.x
