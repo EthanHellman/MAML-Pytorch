@@ -1,6 +1,8 @@
 #  Overview
 Complete restructuring of MAML code3 base to implement semantic injection of geospatial information from FMoW dataset into the domain-specific foundation model RemoteCLIP. Entire MAML training refactored to work with CLIP model training of both vision and text encoder. Custom dataloaders, model classes, and dynamic data distribution classes created to work with highly specific training of RemoteCLIP + FMoW dataset. 
 
+For full details on project, experimentation, and results, refer to https://drive.google.com/file/d/1UvNpPrOr5o01Rx_ATjNxAMwkyTkUdSiY/view?usp=drive_link
+
 
 #  MAML-Pytorch
 PyTorch implementation of the supervised learning experiments from the paper:
@@ -57,16 +59,6 @@ to your actual data path.
 If your reproducation perf. is not so good, maybe you can enlarge your `training epoch` to get longer training. And MAML is notorious for its hard training. Therefore, this implementation only provide you a basic start point to begin your research.
 and the performance below is true and achieved on my machine.
 
-## Benchmark
-
-| Model                               | Fine Tune | 5-way Acc. |        | 20-way Acc.|        |
-|-------------------------------------|-----------|------------|--------|------------|--------|
-|                                     |           | 1-shot     | 5-shot | 1-shot     | 5-shot |
-| Matching Nets                       | N         | 43.56%     | 55.31% | 17.31%     | 22.69% |
-| Meta-LSTM                           |           | 43.44%     | 60.60% | 16.70%     | 26.06% |
-| MAML                                | Y         | 48.7%      | 63.11% | 16.49%     | 19.29% |
-| **Ours**                            | Y         | 46.2%      | 60.3%	| -    		 | - 	|
-
 
 
 # Ominiglot
@@ -77,17 +69,3 @@ run `python omniglot_train.py`, the program will download `omniglot` dataset aut
 decrease the value of `args.task_num` to fit your GPU memory capacity.
 
 For 5-way 1-shot exp., it allocates nearly 3GB GPU memory.
-
-
-# Refer to this Rep.
-```
-@misc{MAML_Pytorch,
-  author = {Liangqu Long},
-  title = {MAML-Pytorch Implementation},
-  year = {2018},
-  publisher = {GitHub},
-  journal = {GitHub repository},
-  howpublished = {\url{https://github.com/dragen1860/MAML-Pytorch}},
-  commit = {master}
-}
-```
