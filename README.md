@@ -1,6 +1,14 @@
 #  Overview
 Complete restructuring of MAML code3 base to implement semantic injection of geospatial information from FMoW dataset into the domain-specific foundation model RemoteCLIP. Entire MAML training refactored to work with CLIP model training of both vision and text encoder. Custom dataloaders, model classes, and dynamic data distribution classes created to work with highly specific training of RemoteCLIP + FMoW dataset. 
 
+Refer to following files for samples of work / code:
+CLIPModel.py
+FMoWDataset.py
+data_prep.py
+few_shot_dataset.py
+few_shot_finetune.py
+sort_data.py
+
 For full details on project, experimentation, and results, refer to https://drive.google.com/file/d/1UvNpPrOr5o01Rx_ATjNxAMwkyTkUdSiY/view?usp=drive_link
 
 
